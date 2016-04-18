@@ -1,0 +1,54 @@
+<!-- Do routing using $Route Service. -->
+
+<html ng-app="myApp">
+	<head>
+		<title>AngularJS Routes</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+		<script type="text/javascript">
+			var module = angular.module('myApp', ['ngRoute']);
+			module.config(['$routeProvider', function($routeProvider){
+				$routeProvider
+				.when('/home', {
+					template: '<h1>This is home page.</h1>OM PRAKASH, UI Developer',
+					controller: 'indexCtrl'
+				})
+				.when('/portfolio', {
+					template: '<h1>This is portfolio page.</h1>UI Developer<br/>',
+					controller: 'indexCtrl'
+				})
+				.when('/about', {
+					template: '<h1>This is about page.</h1>Hi, I am OM PRAKASH.',
+					controller: 'indexCtrl'
+				})
+				.when('/contact', {
+					template: '<h1>This is contact page.</h1>Mail me @ <a href="mailto:om.prakash22588@gmail.com">om.prakash22588@gmail.com</a>',
+					controller: 'indexCtrl'
+				})
+				.otherwise({
+					redirectTo: '/',
+					template: '<h1>This is home page.</h1>OM PRAKASH, UI Developer',
+					controller: 'indexCtrl'
+				})
+			}]);
+			module.controller('indexCtrl', function(){	
+			});
+		</script>
+	</head>
+	<body class="container">
+		<div class="col-sm-2"></div>
+		<div ng-controller="indexCtrl" class="col-sm-8">
+			<ul class="nav nav-tabs">
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/portfolio">Portfolio</a></li>
+				<li><a href="#/about">About</a></li>
+				<li><a href="#/contact">Contact</a></li>
+			</ul>
+			<div ng-view></div>
+		</div>
+		<div class="col-sm-2"></div>
+	</body> 
+</html>
